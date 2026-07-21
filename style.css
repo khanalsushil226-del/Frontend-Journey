@@ -1,0 +1,162 @@
+
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+
+
+.login-container{
+    width: 380px;
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.18);
+
+    transition: transform 0.35s ease,
+                box-shadow 0.35s ease;
+}
+
+
+
+.login-container:hover{
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+h1{
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 42px;
+}
+
+
+
+
+label{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+
+input{
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 22px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    box-sizing: border-box;
+
+    font-size: 16px;
+
+    transition: all 0.3s ease;
+}
+
+
+
+
+input:hover{
+    border-color: royalblue;
+}
+
+
+
+input:focus{
+    outline: none;
+    border-color: royalblue;
+    box-shadow: 0 0 8px rgba(65, 105, 225, 0.3);
+}
+
+
+
+button{
+    width: 100%;
+    padding: 14px;
+
+    margin-top: 10px;
+
+    background: royalblue;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+
+
+
+button:hover{
+    background: #1f4ed8;
+    transform: translateY(-3px);
+}
+
+
+
+
+button:active{
+    transform: scale(0.97);
+}
+.options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
+
+.show-password{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 15px;
+    font-weight: normal;
+
+    cursor: pointer;
+}
+
+.show-password input{
+    width: auto;
+    margin: 0;
+}
+
+.forgot-password{
+    text-decoration: none;
+    color: royalblue;
+    font-size: 15px;
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+.forgot-password:hover{
+    color: #1f4ed8;
+    text-decoration: underline;
+}

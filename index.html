@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login Page</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Login Card -->
+
+    <div class="login-container">
+
+        <h1>Login</h1>
+
+        <form id="loginForm">
+
+            <!-- Username -->
+
+            <div class="input-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    autocomplete="username"
+                    required>
+
+            </div>
+
+            <!-- Password -->
+
+            <div class="input-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required>
+
+            </div>
+
+            <!-- Options -->
+
+            <div class="options">
+
+                <label class="show-password">
+
+                    <input
+                        type="checkbox"
+                        id="showPassword">
+
+                    Show Password
+
+                </label>
+
+                <a href="#" class="forgot-password">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+            <!-- Login Button -->
+
+            <button
+                type="submit"
+                id="loginButton">
+
+                Login
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
