@@ -4,14 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Login Page</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
+    <!-- Dark Mode Button -->
+    <button id="themeToggle" class="theme-btn">
+        🌙
+    </button>
+
+    <!-- Login Card -->
     <div class="login-container">
 
         <h1>Login</h1>
@@ -19,26 +29,22 @@
         <form id="loginForm">
 
             <!-- Username -->
-
             <div class="input-group">
-
-                <label for="username">Username</label>
 
                 <input
                     type="text"
                     id="username"
                     name="username"
-                    placeholder="Enter your username"
+                    placeholder=" "
                     autocomplete="username"
                     required>
+
+                <label for="username">Username</label>
 
             </div>
 
             <!-- Password -->
-
             <div class="input-group">
-
-                <label for="password">Password</label>
 
                 <div class="password-box">
 
@@ -46,18 +52,21 @@
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="Enter your password"
+                        placeholder=" "
                         autocomplete="current-password"
                         required>
 
-                    <span id="togglePassword">👁️</span>
+                    <label for="password">Password</label>
+
+                    <span id="togglePassword">
+                        <i class="fa-solid fa-eye"></i>
+                    </span>
 
                 </div>
 
             </div>
 
             <!-- Options -->
-
             <div class="options">
 
                 <label class="remember-me">
@@ -77,15 +86,14 @@
             </div>
 
             <!-- Login Button -->
+            <button type="submit" id="loginButton">
 
-            <button
-                type="submit"
-                id="loginButton">
-
-                Login
+                <span class="btn-text">Login</span>
+                <span class="spinner"></span>
 
             </button>
 
+            <!-- Register -->
             <p class="bottom-text">
                 Don't have an account?
                 <a href="register.html">Register</a>
@@ -95,7 +103,6 @@
 
     </div>
 
-    <!-- JavaScript -->
     <script src="script.js"></script>
 
 </body>
