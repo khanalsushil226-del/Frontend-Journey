@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Login Page</title>
 
     <!-- CSS -->
@@ -12,8 +11,6 @@
 </head>
 
 <body>
-
-    <!-- Login Card -->
 
     <div class="login-container">
 
@@ -25,9 +22,7 @@
 
             <div class="input-group">
 
-                <label for="username">
-                    Username
-                </label>
+                <label for="username">Username</label>
 
                 <input
                     type="text"
@@ -43,17 +38,21 @@
 
             <div class="input-group">
 
-                <label for="password">
-                    Password
-                </label>
+                <label for="password">Password</label>
 
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    autocomplete="current-password"
-                    required>
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required>
+
+                    <span id="togglePassword">👁️</span>
+
+                </div>
 
             </div>
 
@@ -61,17 +60,17 @@
 
             <div class="options">
 
-                <label class="show-password">
+                <label class="remember-me">
 
                     <input
                         type="checkbox"
-                        id="showPassword">
+                        id="rememberMe">
 
-                    Show Password
+                    Remember Me
 
                 </label>
 
-                <a href="#" class="forgot-password">
+                <a href="forgot.html" class="forgot-password">
                     Forgot Password?
                 </a>
 
@@ -87,12 +86,16 @@
 
             </button>
 
+            <p class="bottom-text">
+                Don't have an account?
+                <a href="register.html">Register</a>
+            </p>
+
         </form>
 
     </div>
 
     <!-- JavaScript -->
-
     <script src="script.js"></script>
 
 </body>

@@ -1,40 +1,90 @@
+// =========================
+// Get HTML Elements
+// =========================
+
 const form = document.getElementById("loginForm");
 const username = document.getElementById("username");
 const password = document.getElementById("password");
-const showPassword = document.getElementById("showPassword");
+
+const rememberMe = document.getElementById("rememberMe");
+const togglePassword = document.getElementById("togglePassword");
 
 
+// =========================
+// Load Saved Username
+// =========================
 
-showPassword.addEventListener("change", function () {
+if (username && rememberMe) {
 
-    if (showPassword.checked) {
-        password.type = "text";
-    } else {
-        password.type = "password";
+    const savedUsername = localStorage.getItem("username");
+
+    if (savedUsername) {
+        username.value = savedUsername;
+        rememberMe.checked = true;
     }
 
-});
+}
 
 
+// =========================
+// Show / Hide Password
+// =========================
 
-form.addEventListener("submit", function (event) {
+if (togglePassword && password) {
 
-    event.preventDefault();
+    togglePassword.addEventListener("click", function () {
 
-    const user = username.value.trim();
-    const pass = password.value.trim();
+        if (password.type === "password") {
 
-    if (user === "" || pass === "") {
-        alert("Please fill all fields.");
-        return;
-    }
+            password.type = "text";
+            togglePassword.textContent = "🙈";
 
-    const saveInfo = confirm("Do you want to save your login information?");
+        } else {
 
-    if (saveInfo) {
-        localStorage.setItem("username", user);
-    }
+            password.type = "password";
+            togglePassword.textContent = "👁️";
 
-    window.location.href = "welcome.html";
+        }
 
-});
+    });
+
+}
+
+
+// =========================
+// Login Form
+// =========================
+
+if (form) {
+
+    form.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const user = username.value.trim();
+        const pass = password.value.trim();
+
+        if (user === "" || pass === "") {
+
+            alert("Please fill all fields.");
+            return;
+
+        }
+
+        const saveInfo = confirm("Do you want to save your login information?");
+
+        if (saveInfo && rememberMe.checked) {
+
+            localStorage.setItem("username", user);
+
+        } else {
+
+            localStorage.removeItem("username");
+
+        }
+
+        window.location.href = "welcome.html";
+
+    });
+
+}
