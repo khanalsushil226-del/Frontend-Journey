@@ -1,10 +1,6 @@
-// =========================
-// Get HTML Elements
-// =========================
-const usernameIcon = document.getElementById("usernameIcon");
-const passwordIcon = document.getElementById("passwordIcon");
-const loginContainer = document.querySelector(".login-container");
-
+// ===================================
+// GET HTML ELEMENTS
+// ===================================
 const form = document.getElementById("loginForm");
 
 const username = document.getElementById("username");
@@ -13,10 +9,13 @@ const password = document.getElementById("password");
 const usernameError = document.getElementById("usernameError");
 const passwordError = document.getElementById("passwordError");
 
+const usernameIcon = document.getElementById("usernameIcon");
+const passwordIcon = document.getElementById("passwordIcon");
+
 const rememberMe = document.getElementById("rememberMe");
 const togglePassword = document.getElementById("togglePassword");
-
 const themeToggle = document.getElementById("themeToggle");
+
 const loginButton = document.getElementById("loginButton");
 
 const toast = document.getElementById("toast");
@@ -24,10 +23,12 @@ const toast = document.getElementById("toast");
 const strengthBar = document.getElementById("strengthBar");
 const strengthText = document.getElementById("strengthText");
 
+const loginContainer = document.querySelector(".login-container");
 
-// =========================
-// Toast Notification
-// =========================
+
+// ===================================
+// UTILITY FUNCTIONS
+// ===================================
 
 function showToast(message, type) {
 
@@ -42,11 +43,6 @@ function showToast(message, type) {
 
 }
 
-
-// =========================
-// Shake Animation
-// =========================
-
 function shakeElement(element) {
 
     element.classList.remove("shake");
@@ -57,169 +53,232 @@ function shakeElement(element) {
 
 }
 
+function showError(element, message) {
 
-// =========================
-// Load Saved Username
-// =========================
+    element.textContent = message;
+
+}
+
+function clearError(element) {
+
+    element.textContent = "";
+
+}
+
+function setValid(icon) {
+
+    icon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+    icon.style.color = "#198754";
+
+}
+
+function setInvalid(icon) {
+
+    icon.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+    icon.style.color = "#dc3545";
+
+}
+
+
+// ===================================
+// LOAD LOCAL STORAGE
+// ===================================
 
 const savedUsername = localStorage.getItem("username");
 
-if (savedUsername) {
+if(savedUsername){
 
     username.value = savedUsername;
     rememberMe.checked = true;
 
 }
 
-
-// =========================
-// Load Saved Theme
-// =========================
-
 const savedTheme = localStorage.getItem("theme");
 
-if (savedTheme === "dark") {
+if(savedTheme === "dark"){
 
     document.body.classList.add("dark-mode");
-    themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
 
-} else {
+    themeToggle.innerHTML =
+    '<i class="fa-solid fa-sun"></i>';
 
-    themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+}else{
+
+    themeToggle.innerHTML =
+    '<i class="fa-solid fa-moon"></i>';
 
 }
 
 
-// =========================
-// Show / Hide Password
-// =========================
+// ===================================
+// SHOW / HIDE PASSWORD
+// ===================================
 
-togglePassword.addEventListener("click", () => {
+togglePassword.addEventListener("click",()=>{
 
     const icon = togglePassword.querySelector("i");
 
-    if (password.type === "password") {
+    if(password.type==="password"){
 
-        password.type = "text";
-        icon.className = "fa-solid fa-eye-slash";
+        password.type="text";
 
-    } else {
+        icon.className="fa-solid fa-eye-slash";
 
-        password.type = "password";
-        icon.className = "fa-solid fa-eye";
+    }else{
+
+        password.type="password";
+
+        icon.className="fa-solid fa-eye";
 
     }
 
 });
 
 
-// =========================
-// Username Live Validation
-// =========================
+// ===================================
+// USERNAME VALIDATION
+// ===================================
 
-if (username.value.trim().length < 4) {
+function validateUsername(){
 
-    usernameError.textContent =
-        "Username must be at least 4 characters.";
+    const value = username.value.trim();
 
-    usernameIcon.innerHTML =
-        '<i class="fa-solid fa-circle-xmark"></i>';
+    if(value===""){
 
-    usernameIcon.style.color = "#dc3545";
+        showError(usernameError,"Username is required.");
 
-} else {
+        setInvalid(usernameIcon);
 
-    usernameError.textContent = "";
+        return false;
 
-    usernameIcon.innerHTML =
-        '<i class="fa-solid fa-circle-check"></i>';
+    }
 
-    usernameIcon.style.color = "#28a745";
+    if(value.length<4){
+
+        showError(usernameError,
+        "Username must be at least 4 characters.");
+
+        setInvalid(usernameIcon);
+
+        return false;
+
+    }
+
+    clearError(usernameError);
+
+    setValid(usernameIcon);
+
+    return true;
+
+}
+
+username.addEventListener("input",validateUsername);
+
+
+// ===================================
+// PASSWORD VALIDATION
+// ===================================
+
+function validatePassword(){
+
+    const value=password.value;
+
+    if(value===""){
+
+        showError(passwordError,"Password is required.");
+
+        setInvalid(passwordIcon);
+
+        return false;
+
+    }
+
+    if(value.length<8){
+
+        showError(passwordError,
+        "Password must be at least 8 characters.");
+
+        setInvalid(passwordIcon);
+
+        return false;
+
+    }
+
+    clearError(passwordError);
+
+    setValid(passwordIcon);
+
+    return true;
 
 }
 
 
-// =========================
-// Password Validation +
-// Strength Meter
-// =========================
+// ===================================
+// PASSWORD STRENGTH METER
+// ===================================
 
-if (value.length < 8) {
+password.addEventListener("input",()=>{
 
-    passwordError.textContent =
-        "Password must be at least 8 characters.";
+    validatePassword();
 
-    passwordIcon.innerHTML =
-        '<i class="fa-solid fa-circle-xmark"></i>';
+    const value=password.value;
 
-    passwordIcon.style.color = "#dc3545";
+    let strength=0;
 
-} else {
+    if(value.length>=8) strength++;
 
-    passwordError.textContent = "";
+    if(/[A-Z]/.test(value)) strength++;
 
-    passwordIcon.innerHTML =
-        '<i class="fa-solid fa-circle-check"></i>';
+    if(/[0-9]/.test(value)) strength++;
 
-    passwordIcon.style.color = "#28a745";
+    if(/[^A-Za-z0-9]/.test(value)) strength++;
 
-}
-
-    // Strength Meter
-
-    let strength = 0;
-
-    if (value.length >= 8) strength++;
-    if (/[A-Z]/.test(value)) strength++;
-    if (/[0-9]/.test(value)) strength++;
-    if (/[^A-Za-z0-9]/.test(value)) strength++;
-
-    switch (strength) {
+    switch(strength){
 
         case 0:
 
-            strengthBar.style.width = "0%";
-            strengthText.textContent = "";
+            strengthBar.style.width="0%";
+            strengthText.textContent="";
 
             break;
 
         case 1:
 
-            strengthBar.style.width = "25%";
-            strengthBar.style.background = "#dc3545";
+            strengthBar.style.width="25%";
+            strengthBar.style.background="#dc3545";
 
-            strengthText.textContent = "Weak";
-            strengthText.style.color = "#dc3545";
+            strengthText.textContent="Weak";
+            strengthText.style.color="#dc3545";
 
             break;
 
         case 2:
 
-            strengthBar.style.width = "50%";
-            strengthBar.style.background = "#fd7e14";
+            strengthBar.style.width="50%";
+            strengthBar.style.background="#fd7e14";
 
-            strengthText.textContent = "Fair";
-            strengthText.style.color = "#fd7e14";
+            strengthText.textContent="Fair";
+            strengthText.style.color="#fd7e14";
 
             break;
 
         case 3:
 
-            strengthBar.style.width = "75%";
-            strengthBar.style.background = "#ffc107";
+            strengthBar.style.width="75%";
+            strengthBar.style.background="#ffc107";
 
-            strengthText.textContent = "Good";
-            strengthText.style.color = "#ffc107";
+            strengthText.textContent="Good";
+            strengthText.style.color="#ffc107";
 
             break;
 
         case 4:
 
-            strengthBar.style.width = "100%";
-            strengthBar.style.background = "#28a745";
+            strengthBar.style.width="100%";
+            strengthBar.style.background="#198754";
 
-            strengthText.textContent = "Strong";
-            strengthText.style.color = "#28a745";
+            strengthText.textContent="Strong";
+            strengthText.style.color="#198754";
 
             break;
 
@@ -228,54 +287,34 @@ if (value.length < 8) {
 });
 
 
-// =========================
-// Login Form Validation
-// =========================
+// ===================================
+// LOGIN FORM
+// ===================================
 
-form.addEventListener("submit", function(event){
+form.addEventListener("submit",(event)=>{
 
     event.preventDefault();
 
-    usernameError.textContent = "";
-    passwordError.textContent = "";
+    const validUsername = validateUsername();
+    const validPassword = validatePassword();
 
-    const user = username.value.trim();
-    const pass = password.value.trim();
-
-    if(user === ""){
-
-        usernameError.textContent = "Username is required.";
-
-        showToast("Username is required.","error");
+    if(!validUsername || !validPassword){
 
         shakeElement(loginContainer);
 
-        username.focus();
-
-        return;
-
-    }
-
-    if(pass === ""){
-
-        passwordError.textContent = "Password is required.";
-
-        showToast("Password is required.","error");
-
-        shakeElement(loginContainer);
-
-        password.focus();
+        showToast("Please fix the errors.","error");
 
         return;
 
     }
 
     loginButton.classList.add("loading");
-    loginButton.disabled = true;
+
+    loginButton.disabled=true;
 
     if(rememberMe.checked){
 
-        localStorage.setItem("username",user);
+        localStorage.setItem("username",username.value.trim());
 
     }else{
 
@@ -287,16 +326,16 @@ form.addEventListener("submit", function(event){
 
     setTimeout(()=>{
 
-        window.location.href="welcome.html";
+        window.location.href="dashboard.html";
 
     },2000);
 
 });
 
 
-// =========================
-// Dark Mode Toggle
-// =========================
+// ===================================
+// DARK MODE
+// ===================================
 
 themeToggle.addEventListener("click",()=>{
 
@@ -319,3 +358,11 @@ themeToggle.addEventListener("click",()=>{
     }
 
 });
+
+
+// ===================================
+// INITIALIZE VALIDATION
+// ===================================
+
+validateUsername();
+validatePassword();

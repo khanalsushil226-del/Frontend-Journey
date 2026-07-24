@@ -15,7 +15,7 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -23,196 +23,219 @@
 
 <body>
 
-<!-- ===================================
-        THEME TOGGLE BUTTON
-=================================== -->
-
-<button
-    id="themeToggle"
-    class="theme-btn"
-    aria-label="Toggle Dark Mode">
-
-    <i class="fa-solid fa-moon"></i>
-
-</button>
-
-
-<!-- ===================================
-        LOGIN CARD
-=================================== -->
-
-<div class="login-container">
-
     <!-- ===================================
-            LOGIN TITLE
+            THEME TOGGLE BUTTON
     =================================== -->
 
-    <h1>Login</h1>
+    <button
+        id="themeToggle"
+        class="theme-btn"
+        aria-label="Toggle Dark Mode">
+
+        <i class="fa-solid fa-moon"></i>
+
+    </button>
 
 
     <!-- ===================================
-            LOGIN FORM
+            LOGIN CARD
     =================================== -->
 
-    <form id="loginForm">
+    <div class="login-container">
+
+        <!-- ===================================
+                LOGIN TITLE
+        =================================== -->
+
+        <h1>Login</h1>
 
 
         <!-- ===================================
-                USERNAME FIELD
+                LOGIN FORM
         =================================== -->
 
-        <div class="input-group">
+        <form id="loginForm">
 
-            <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder=" "
-                autocomplete="username"
-                required>
+            <!-- ===================================
+                    USERNAME
+            =================================== -->
 
-            <label for="username">
-                Username
-            </label>
-
-            <!-- Username Error -->
-
-            <span id="usernameIcon" class="validation-icon"></span>
-
-<small id="usernameError" class="error-message"></small>
-        </div>
-
-
-        <!-- ===================================
-                PASSWORD FIELD
-        =================================== -->
-
-        <div class="input-group">
-
-            <div class="password-box">
+            <div class="input-group">
 
                 <input
-                    type="password"
-                    id="password"
-                    name="password"
+                    type="text"
+                    id="username"
+                    name="username"
                     placeholder=" "
-                    autocomplete="current-password"
+                    autocomplete="username"
                     required>
 
-                <label for="password">
-                    Password
+                <label for="username">
+                    Username
                 </label>
 
-                <!-- Show / Hide Password -->
+                <!-- Validation Icon -->
 
-                <span id="togglePassword">
-
-                    <i class="fa-solid fa-eye"></i>
-
+                <span
+                    id="usernameIcon"
+                    class="validation-icon">
                 </span>
+
+                <!-- Error -->
+
+                <small
+                    id="usernameError"
+                    class="error-message">
+                </small>
 
             </div>
 
-             <!-- ===================================
-            PASSWORD STRENGTH METER
-    =================================== -->
 
-    <div class="strength-meter">
-        <div id="strengthBar"></div>
+            <!-- ===================================
+                    PASSWORD
+            =================================== -->
+
+            <div class="input-group">
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder=" "
+                        autocomplete="current-password"
+                        required>
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <!-- Eye Button -->
+
+                    <span id="togglePassword">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </span>
+
+                    <!-- Validation Icon -->
+
+                    <span
+                        id="passwordIcon"
+                        class="validation-icon">
+                    </span>
+
+                </div>
+
+                <!-- ===================================
+                        PASSWORD STRENGTH
+                =================================== -->
+
+                <div class="strength-meter">
+
+                    <div id="strengthBar"></div>
+
+                </div>
+
+                <p
+                    id="strengthText"
+                    class="strength-text">
+                </p>
+
+                <!-- Password Error -->
+
+                <small
+                    id="passwordError"
+                    class="error-message">
+                </small>
+
+            </div>
+
+
+            <!-- ===================================
+                    OPTIONS
+            =================================== -->
+
+            <div class="options">
+
+                <label class="remember-me">
+
+                    <input
+                        type="checkbox"
+                        id="rememberMe">
+
+                    Remember Me
+
+                </label>
+
+                <a
+                    href="forgot.html"
+                    class="forgot-password">
+
+                    Forgot Password?
+
+                </a>
+
+            </div>
+
+
+            <!-- ===================================
+                    LOGIN BUTTON
+            =================================== -->
+
+            <button
+                type="submit"
+                id="loginButton">
+
+                <span class="btn-text">
+
+                    Login
+
+                </span>
+
+                <span class="spinner"></span>
+
+            </button>
+
+
+            <!-- ===================================
+                    REGISTER
+            =================================== -->
+
+            <p class="bottom-text">
+
+                Don't have an account?
+
+                <a href="register.html">
+
+                    Register
+
+                </a>
+
+            </p>
+
+        </form>
+
     </div>
 
-    <p id="strengthText" class="strength-text"></p>
 
-    <!-- Password Error -->
-    <small id="passwordError" class="error-message"></small>
+    <!-- ===================================
+            TOAST
+    =================================== -->
 
-</div>
-        <!-- Password Error -->
-
-<small
-    id="passwordError"
-    class="error-message">
-</small>
+    <div
+        id="toast"
+        class="toast">
+    </div>
 
 
-        <!-- ===================================
-                REMEMBER ME & FORGOT PASSWORD
-        =================================== -->
+    <!-- ===================================
+            JAVASCRIPT
+    =================================== -->
 
-        <div class="options">
-
-            <label class="remember-me">
-
-                <input
-                    type="checkbox"
-                    id="rememberMe">
-
-                Remember Me
-
-            </label>
-
-            <a
-                href="forgot.html"
-                class="forgot-password">
-
-                Forgot Password?
-
-            </a>
-
-        </div>
-
-
-        <!-- ===================================
-                LOGIN BUTTON
-        =================================== -->
-
-        <button
-            type="submit"
-            id="loginButton">
-
-            <span class="btn-text">
-                Login
-            </span>
-
-            <span class="spinner"></span>
-
-        </button>
-
-
-        <!-- ===================================
-                REGISTER LINK
-        =================================== -->
-
-        <p class="bottom-text">
-
-            Don't have an account?
-
-            <a href="register.html">
-                Register
-            </a>
-
-        </p>
-
-    </form>
-
-</div>
-
-
-<!-- ===================================
-        TOAST NOTIFICATION
-=================================== -->
-
-<div
-    id="toast"
-    class="toast">
-</div>
-
-
-<!-- ===================================
-        JAVASCRIPT
-=================================== -->
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>

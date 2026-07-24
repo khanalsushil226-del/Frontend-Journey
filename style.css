@@ -678,16 +678,213 @@ border-top: 2.5px solid white;
    VALIDATION ICON
 =================================== */
 
+
 .validation-icon{
 
     position:absolute;
 
-    right:15px;
+    right:50px;          /* Leave space for eye icon */
 
-    top:20px;
+    top:50%;
+
+    transform:translateY(-50%);
 
     font-size:18px;
 
     transition:.3s;
+
+}
+/* ===================================
+   DASHBOARD
+=================================== */
+
+.dashboard-container{
+
+    width:90%;
+    max-width:1100px;
+
+    margin:40px auto;
+
+}
+
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:royalblue;
+
+    color:white;
+
+    padding:20px 30px;
+
+    border-radius:15px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.dashboard-header h1{
+
+    margin:0;
+
+    font-size:30px;
+
+}
+
+#logoutBtn{
+
+    border:none;
+
+    background:#dc3545;
+
+    color:white;
+
+    padding:12px 22px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+#logoutBtn:hover{
+
+    background:#bb2d3b;
+
+    transform:translateY(-2px);
+
+}
+
+.welcome-section{
+
+    background:white;
+
+    margin-top:25px;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.welcome-section h2{
+
+    font-size:32px;
+
+    margin-bottom:12px;
+
+}
+
+.welcome-section p{
+
+    color:#666;
+
+    font-size:18px;
+
+}
+
+.quick-actions{
+
+    margin-top:30px;
+
+}
+
+.quick-actions h3{
+
+    margin-bottom:20px;
+
+}
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.card{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.card i{
+
+    font-size:40px;
+
+    color:royalblue;
+
+    margin-bottom:15px;
+
+}
+
+.card h4{
+
+    font-size:20px;
+
+}
+/* ===================================
+   DASHBOARD DARK MODE
+=================================== */
+
+.dark-mode .welcome-section,
+.dark-mode .card{
+
+    background:#1f1f1f;
+
+    color:white;
+
+}
+
+.dark-mode .dashboard-header{
+
+    background:#0d47a1;
+
+}
+
+.dark-mode #logoutBtn{
+
+    background:#b71c1c;
+
+}
+
+.dark-mode .welcome-section p{
+
+    color:#bbb;
 
 }

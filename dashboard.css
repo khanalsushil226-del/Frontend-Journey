@@ -1,0 +1,369 @@
+/* ===================================
+   GLOBAL
+=================================== */
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f7fc;
+}
+
+.dashboard{
+    display:flex;
+    min-height:100vh;
+}
+
+
+/* ===================================
+   SIDEBAR
+=================================== */
+
+.sidebar{
+
+    width:270px;
+
+    background:#1e3a8a;
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:25px 20px;
+
+    box-shadow:5px 0 20px rgba(0,0,0,.15);
+
+}
+
+
+/* ===================================
+   LOGO
+=================================== */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    margin-bottom:45px;
+
+}
+
+.logo i{
+
+    font-size:22px;
+
+}
+
+
+/* ===================================
+   MENU
+=================================== */
+
+/* ===================================
+   MENU
+=================================== */
+
+.menu{
+
+    position:relative;
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.menu-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px 15px;
+
+    margin:8px 0;
+
+    cursor:pointer;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.menu-item i{
+
+    width:25px;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:18px;
+
+}
+
+.menu-item span{
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:500;
+
+}
+
+/* Sliding White Pill */
+
+.menu-indicator{
+
+    position:absolute;
+
+    left:42px;
+
+    width:120px;
+
+    height:42px;
+
+    background:white;
+
+    border-radius:30px;
+
+    transition:.35s ease;
+
+    z-index:1;
+
+}
+
+/* Active Item */
+
+.menu-item.active span{
+
+    color:#1e3a8a;
+
+    font-weight:700;
+
+}
+
+
+/* ===================================
+   SIDEBAR BOTTOM
+=================================== */
+
+.sidebar-bottom{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.sidebar-bottom button{
+
+    width:100%;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:all .3s ease;
+
+}
+
+#dashboardTheme{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+#logoutBtn{
+
+    background:#ef4444;
+
+    color:white;
+
+}
+
+.sidebar-bottom button:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+/* ===================================
+   MAIN CONTENT
+=================================== */
+
+.main-content{
+
+    flex:1;
+
+    padding:40px;
+
+}
+
+
+/* ===================================
+   TOP BAR
+=================================== */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:40px;
+
+}
+
+.topbar h2{
+
+    margin:0;
+
+    font-size:34px;
+
+}
+
+.topbar p{
+
+    margin-top:8px;
+
+    color:#666;
+
+}
+
+
+/* ===================================
+   DASHBOARD CARDS
+=================================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+
+    gap:25px;
+
+}
+
+.card{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+    transition:all .3s ease;
+
+}
+
+.card i{
+
+    font-size:45px;
+
+    color:#2563eb;
+
+    margin-bottom:20px;
+
+}
+
+.card h3{
+
+    margin:0;
+
+    font-size:22px;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+
+}
+
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media (max-width:900px){
+.sidebar{
+
+    width:220px;
+
+    }
+
+    .logo span{
+
+        display:none;
+
+    }
+
+    .menu li{
+
+        justify-content:center;
+
+        padding:18px;
+
+    }
+
+    .menu li span{
+
+        display:none;
+
+    }
+
+    .sidebar-bottom button span{
+
+        display:none;
+
+    }
+
+}
