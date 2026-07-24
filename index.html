@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- ===================================
+        HEAD SECTION
+=================================== -->
+
 <head>
 
     <meta charset="UTF-8">
@@ -8,10 +12,10 @@
 
     <title>Login Page</title>
 
-    <!-- CSS -->
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Font Awesome -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -19,121 +23,196 @@
 
 <body>
 
-    <!-- Theme Toggle -->
-    <button id="themeToggle" class="theme-btn" aria-label="Toggle Dark Mode">
-        <i class="fa-solid fa-moon"></i>
-    </button>
+<!-- ===================================
+        THEME TOGGLE BUTTON
+=================================== -->
 
-    <!-- Login Card -->
+<button
+    id="themeToggle"
+    class="theme-btn"
+    aria-label="Toggle Dark Mode">
 
-    <div class="login-container">
+    <i class="fa-solid fa-moon"></i>
 
-        <h1>Login</h1>
+</button>
 
-        <form id="loginForm">
 
-            <!-- Username -->
+<!-- ===================================
+        LOGIN CARD
+=================================== -->
 
-            <div class="input-group">
+<div class="login-container">
+
+    <!-- ===================================
+            LOGIN TITLE
+    =================================== -->
+
+    <h1>Login</h1>
+
+
+    <!-- ===================================
+            LOGIN FORM
+    =================================== -->
+
+    <form id="loginForm">
+
+
+        <!-- ===================================
+                USERNAME FIELD
+        =================================== -->
+
+        <div class="input-group">
+
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder=" "
+                autocomplete="username"
+                required>
+
+            <label for="username">
+                Username
+            </label>
+
+            <!-- Username Error -->
+
+            <span id="usernameIcon" class="validation-icon"></span>
+
+<small id="usernameError" class="error-message"></small>
+        </div>
+
+
+        <!-- ===================================
+                PASSWORD FIELD
+        =================================== -->
+
+        <div class="input-group">
+
+            <div class="password-box">
 
                 <input
-                    type="text"
-                    id="username"
-                    name="username"
+                    type="password"
+                    id="password"
+                    name="password"
                     placeholder=" "
-                    autocomplete="username"
+                    autocomplete="current-password"
                     required>
 
-                <label for="username">
-                    Username
+                <label for="password">
+                    Password
                 </label>
 
-                <small id="usernameError" class="error-message"></small>
+                <!-- Show / Hide Password -->
 
-            </div>
+                <span id="togglePassword">
 
-            <!-- Password -->
+                    <i class="fa-solid fa-eye"></i>
 
-            <div class="input-group">
-
-                <div class="password-box">
-
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder=" "
-                        autocomplete="current-password"
-                        required>
-
-                    <label for="password">
-                        Password
-                    </label>
-
-                    <span id="togglePassword">
-                        <i class="fa-solid fa-eye"></i>
-                    </span>
-
-                </div>
-
-            </div>
-
-            <!-- Options -->
-
-            <div class="options">
-
-                <label class="remember-me">
-
-                    <input
-                        type="checkbox"
-                        id="rememberMe">
-
-                    Remember Me
-
-                </label>
-
-                <a href="forgot.html" class="forgot-password">
-                    Forgot Password?
-                </a>
-
-            </div>
-
-            <!-- Login Button -->
-
-            <button type="submit" id="loginButton">
-
-                <span class="btn-text">
-                    Login
                 </span>
 
-                <span class="spinner"></span>
+            </div>
 
-            </button>
+             <!-- ===================================
+            PASSWORD STRENGTH METER
+    =================================== -->
 
-            <!-- Register -->
-
-            <p class="bottom-text">
-
-                Don't have an account?
-
-                <a href="register.html">
-                    Register
-                </a>
-
-            </p>
-
-        </form>
-
+    <div class="strength-meter">
+        <div id="strengthBar"></div>
     </div>
 
-    <!-- Toast Notification -->
+    <p id="strengthText" class="strength-text"></p>
 
-    <div id="toast" class="toast"></div>
+    <!-- Password Error -->
+    <small id="passwordError" class="error-message"></small>
 
-    <!-- JavaScript -->
+</div>
+        <!-- Password Error -->
 
-    <script src="script.js"></script>
+<small
+    id="passwordError"
+    class="error-message">
+</small>
+
+
+        <!-- ===================================
+                REMEMBER ME & FORGOT PASSWORD
+        =================================== -->
+
+        <div class="options">
+
+            <label class="remember-me">
+
+                <input
+                    type="checkbox"
+                    id="rememberMe">
+
+                Remember Me
+
+            </label>
+
+            <a
+                href="forgot.html"
+                class="forgot-password">
+
+                Forgot Password?
+
+            </a>
+
+        </div>
+
+
+        <!-- ===================================
+                LOGIN BUTTON
+        =================================== -->
+
+        <button
+            type="submit"
+            id="loginButton">
+
+            <span class="btn-text">
+                Login
+            </span>
+
+            <span class="spinner"></span>
+
+        </button>
+
+
+        <!-- ===================================
+                REGISTER LINK
+        =================================== -->
+
+        <p class="bottom-text">
+
+            Don't have an account?
+
+            <a href="register.html">
+                Register
+            </a>
+
+        </p>
+
+    </form>
+
+</div>
+
+
+<!-- ===================================
+        TOAST NOTIFICATION
+=================================== -->
+
+<div
+    id="toast"
+    class="toast">
+</div>
+
+
+<!-- ===================================
+        JAVASCRIPT
+=================================== -->
+
+<script src="script.js"></script>
 
 </body>
-
 </html>
