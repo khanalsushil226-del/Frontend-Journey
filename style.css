@@ -308,45 +308,56 @@ button:not(.theme-btn):active{
    THEME BUTTON
 =================================== */
 
+/* ===================================
+   THEME BUTTON
+=================================== */
+
 .theme-btn{
 
-    position:fixed;
+    position: fixed;
 
-    top:20px;
+    top: 25px;
+    right: 25px;
 
-    right:20px;
+    width: 55px;
+    height: 55px;
 
-    width:50px;
+    border: none;
+    border-radius: 50%;
 
-    height:50px;
+    background: rgba(255,255,255,.85);
 
-    border:none;
+    backdrop-filter: blur(12px);
 
-    border-radius:50%;
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.15);
 
-    background:royalblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    color:white;
+    cursor: pointer;
+
+    transition: all .35s ease;
+
+    z-index: 1000;
+}
+
+.theme-btn i{
 
     font-size:22px;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    cursor:pointer;
+    color:#444;
 
     transition:.35s;
-
-    z-index:1000;
-
 }
 
 .theme-btn:hover{
 
-    transform:rotate(180deg);
+    transform:translateY(-3px) rotate(20deg);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.22);
 
 }
 
@@ -411,6 +422,17 @@ button:not(.theme-btn):active{
 .dark-mode .bottom-text a{
 
     color:#66a3ff;
+
+}
+.dark-mode .theme-btn{
+
+    background:rgba(40,40,40,.9);
+
+}
+
+.dark-mode .theme-btn i{
+
+    color:#FFD54F;
 
 }
 
@@ -506,5 +528,105 @@ border-top: 2.5px solid white;
     to{
         transform: rotate(360deg);
     }
+
+}
+/* ===================================
+   ERROR MESSAGE
+=================================== */
+
+.error-message{
+
+    display: block;
+
+    margin-top: 6px;
+
+    margin-left: 5px;
+
+    color: #e53935;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    min-height: 16px;
+
+}
+/* ===================================
+   TOAST NOTIFICATION
+=================================== */
+
+.toast{
+
+    position: fixed;
+
+    top: 25px;
+    left: 50%;
+
+    transform: translateX(-50%) translateY(-100px);
+
+    background: #333;
+
+    color: white;
+
+    padding: 15px 28px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+
+    opacity: 0;
+
+    transition: .4s ease;
+
+    z-index: 9999;
+
+}
+
+.toast.show{
+
+    transform: translateX(-50%) translateY(0);
+
+    opacity: 1;
+
+}
+
+.toast.success{
+
+    background:#28a745;
+
+}
+
+.toast.error{
+
+    background:#dc3545;
+
+}
+/* ===================================
+   SHAKE ANIMATION
+=================================== */
+
+@keyframes shake {
+
+    0%   { transform: translateX(0); }
+
+    20%  { transform: translateX(-8px); }
+
+    40%  { transform: translateX(8px); }
+
+    60%  { transform: translateX(-8px); }
+
+    80%  { transform: translateX(8px); }
+
+    100% { transform: translateX(0); }
+
+}
+
+.shake {
+
+    animation: shake .4s ease;
 
 }
