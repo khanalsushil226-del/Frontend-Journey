@@ -1,0 +1,374 @@
+/* ===================================
+   GOOGLE FONT
+=================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ===================================
+   GLOBAL
+=================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f5f7fb;
+    color:#222;
+}
+
+/* ===================================
+   HEADER
+=================================== */
+
+.header{
+
+    background:#fff;
+
+    padding:20px 60px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.logo i{
+
+    font-size:30px;
+
+    color:#2563eb;
+
+}
+
+.logo h2{
+
+    font-size:28px;
+
+}
+
+.header button{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 24px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.header button:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ===================================
+   HERO
+=================================== */
+
+.hero{
+
+    background:linear-gradient(135deg,#2563eb,#1e40af);
+
+    color:white;
+
+    text-align:center;
+
+    padding:80px 20px;
+
+}
+
+.hero h1{
+
+    font-size:50px;
+
+    margin-bottom:15px;
+
+}
+
+.hero p{
+
+    font-size:18px;
+
+    opacity:.9;
+
+}
+
+/* ===================================
+   SEARCH AREA
+=================================== */
+
+.search-area{
+
+    width:90%;
+
+    margin:-35px auto 50px;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    display:flex;
+
+    gap:20px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+.search-area input,
+.search-area select{
+
+    flex:1;
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+}
+
+/* ===================================
+   JOB GRID
+=================================== */
+
+.jobs-grid{
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:30px;
+
+    padding-bottom:60px;
+
+}
+
+/* ===================================
+   JOB CARD
+=================================== */
+
+.job-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:28px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    border-top:5px solid #2563eb;
+
+}
+
+.job-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.job-card h2{
+
+    margin-bottom:22px;
+
+    font-size:25px;
+
+}
+
+/* ===================================
+   DETAILS
+=================================== */
+
+.company,
+.location,
+.salary{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:15px;
+
+    color:#555;
+
+}
+
+.company i,
+.location i,
+.salary i{
+
+    color:#2563eb;
+
+    width:20px;
+
+}
+
+/* ===================================
+   JOB TYPE
+=================================== */
+
+.job-type{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    background:#e8f0ff;
+
+    color:#2563eb;
+
+    padding:8px 18px;
+
+    border-radius:25px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+/* ===================================
+   BUTTONS
+=================================== */
+
+.job-actions{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:30px;
+
+}
+
+.apply-btn{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.apply-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+.save-btn{
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#eef3ff;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.save-btn i{
+
+    color:#2563eb;
+
+}
+
+.save-btn:hover{
+
+    background:#2563eb;
+
+}
+
+.save-btn:hover i{
+
+    color:white;
+
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media(max-width:768px){
+
+.search-area{
+
+    flex-direction:column;
+
+}
+
+.header{
+
+    padding:20px;
+
+}
+
+.hero h1{
+
+    font-size:38px;
+
+}
+
+}

@@ -1,59 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- ===================================
-        HEAD SECTION
-=================================== -->
-
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard</title>
+    <title>SkillLink Nepal</title>
 
-    <!-- Dashboard CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="dashboard.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<!-- ===================================
-        DASHBOARD WRAPPER
-=================================== -->
-
 <div class="dashboard">
 
-    <!-- ===================================
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- =========================
             SIDEBAR
-    =================================== -->
+    ========================== -->
 
-    <aside class="sidebar">
+    <aside id="sidebar" class="sidebar">
 
-        <!-- ===================================
-                LOGO
-        =================================== -->
+        <!-- Logo -->
 
         <div class="logo">
 
-            <i class="fa-solid fa-layer-group"></i>
+            <i class="fa-solid fa-briefcase"></i>
 
-            <span id="sidebarUsername">
-                Loading...
-            </span>
+            <span>SkillLink</span>
 
         </div>
 
-        <!-- ===================================
-                NAVIGATION MENU
-        =================================== -->
+        <!-- Navigation -->
 
         <nav>
 
@@ -63,9 +51,7 @@
 
                     <i class="fa-solid fa-house"></i>
 
-                    <span class="menu-text">
-                        Dashboard
-                    </span>
+                    <span>Dashboard</span>
 
                 </li>
 
@@ -73,29 +59,55 @@
 
                     <i class="fa-solid fa-user"></i>
 
-                    <span class="menu-text">
-                        Profile
-                    </span>
+                    <span>My Profile</span>
 
                 </li>
 
                 <li class="menu-item">
 
-                    <i class="fa-solid fa-chart-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
 
-                    <span class="menu-text">
-                        Analytics
-                    </span>
+                    <span>Find Jobs</span>
 
                 </li>
 
                 <li class="menu-item">
 
-                    <i class="fa-solid fa-file-lines"></i>
+                    <i class="fa-solid fa-file-circle-check"></i>
 
-                    <span class="menu-text">
-                        Reports
-                    </span>
+                    <span>Applications</span>
+
+                </li>
+
+                <li class="menu-item">
+
+                    <i class="fa-solid fa-heart"></i>
+
+                    <span>Saved Jobs</span>
+
+                </li>
+
+                <li class="menu-item">
+
+                    <i class="fa-solid fa-building"></i>
+
+                    <span>Companies</span>
+
+                </li>
+
+                <li class="menu-item">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <span>Messages</span>
+
+                </li>
+
+                <li class="menu-item">
+
+                    <i class="fa-solid fa-bell"></i>
+
+                    <span>Notifications</span>
 
                 </li>
 
@@ -103,9 +115,7 @@
 
                     <i class="fa-solid fa-gear"></i>
 
-                    <span class="menu-text">
-                        Settings
-                    </span>
+                    <span>Settings</span>
 
                 </li>
 
@@ -113,9 +123,7 @@
 
         </nav>
 
-        <!-- ===================================
-                SIDEBAR BUTTONS
-        =================================== -->
+        <!-- Bottom Buttons -->
 
         <div class="sidebar-bottom">
 
@@ -123,9 +131,7 @@
 
                 <i class="fa-solid fa-moon"></i>
 
-                <span>
-                    Theme
-                </span>
+                <span>Theme</span>
 
             </button>
 
@@ -133,9 +139,7 @@
 
                 <i class="fa-solid fa-right-from-bracket"></i>
 
-                <span>
-                    Logout
-                </span>
+                <span>Logout</span>
 
             </button>
 
@@ -143,157 +147,514 @@
 
     </aside>
 
-    <!-- ===================================
+    <!-- =========================
             MAIN CONTENT
-    =================================== -->
+    ========================== -->
 
-    <main class="main-content">
+    <main id="mainContent" class="main-content">
+        <!-- =========================
+        HERO SECTION
+========================= -->
 
-        <!-- ===================================
-                TOP HEADER
-        =================================== -->
+<header class="hero">
 
-        <header class="topbar">
+    <!-- Top Navigation -->
 
-            <div>
+    <div class="hero-top">
 
-                <h2 id="greeting">
+        <button id="menuToggle" class="menu-toggle">
 
-                    Good Morning ☀️,
+            <i class="fa-solid fa-bars"></i>
 
-                    <span id="displayUsername">
-                        User
-                    </span>
+        </button>
 
-                </h2>
+        <div class="hero-user">
 
-                <p id="currentDate">
-                    Loading date...
-                </p>
+            <h2 id="greeting">
 
-            </div>
+                Good Morning,
 
-        </header>
+                <span id="displayUsername">Sushil</span>
 
-        <!-- ===================================
-                DASHBOARD CARDS
-        =================================== -->
+                👋
 
-        <section class="cards">
+            </h2>
 
-            <div class="card">
+            <p id="currentDate">
 
-                <i class="fa-solid fa-users"></i>
+                Welcome back to SkillLink Nepal
 
-                <h3>Total Users</h3>
+            </p>
 
-                <h2 id="usersCount">
-                    0
-                </h2>
+        </div>
 
-            </div>
+        <div class="hero-icons">
 
-            <div class="card">
+            <button class="icon-btn">
 
-                <i class="fa-solid fa-dollar-sign"></i>
+                <i class="fa-regular fa-bell"></i>
 
-                <h3>Revenue</h3>
+            </button>
 
-                <h2 id="revenueCount">
-                    $0
-                </h2>
+            <button class="icon-btn">
 
-            </div>
+                <i class="fa-regular fa-envelope"></i>
 
-            <div class="card">
+            </button>
 
-                <i class="fa-solid fa-file-lines"></i>
+            <div class="profile-mini">
 
-                <h3>Reports</h3>
-
-                <h2 id="reportsCount">
-                    0
-                </h2>
+                <img src="https://ui-avatars.com/api/?name=Sushil&background=2563eb&color=fff" alt="Profile">
 
             </div>
 
-            <div class="card">
+        </div>
 
-                <i class="fa-solid fa-sliders"></i>
+    </div>
 
-                <h3>Settings</h3>
+    <!-- Hero Content -->
 
-                <h2 id="settingsCount">
-                    4
-                </h2>
+    <div class="hero-content">
 
-            </div>
+        <h1>
 
-        </section>
+            Find Your Dream Job in Nepal
 
-        <!-- ===================================
-                RECENT ACTIVITY
-        =================================== -->
+        </h1>
 
-        <section class="recent-activity">
+        <p>
 
-            <div class="section-header">
+            Search thousands of verified jobs from trusted companies across Nepal.
 
-                <h2>
-                    Recent Activity
-                </h2>
+        </p>
 
-            </div>
+    </div>
 
-            <div class="activity-box">
+    <!-- Search Bar -->
 
-                <p>
+    <div class="search-box">
 
-                    🚀 No recent activity available.
+        <div class="search-input">
 
-                </p>
+            <i class="fa-solid fa-magnifying-glass"></i>
 
-            </div>
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Job title, company or skills">
 
-        </section>
+        </div>
 
-        <!-- ===================================
-                ANALYTICS CHART
-        =================================== -->
+        <div class="search-input">
 
-        <section class="chart-section">
+            <i class="fa-solid fa-location-dot"></i>
 
-            <div class="section-header">
+            <select id="locationFilter">
 
-                <h2>
+                <option value="">All Locations</option>
 
-                    Analytics Overview
+                <option>Birtamode</option>
 
-                </h2>
+                <option>Damak</option>
 
-            </div>
+                <option>Jhapa</option>
 
-            <div class="chart-box">
+                <option>Kathmandu</option>
 
-                <canvas id="dashboardChart"></canvas>
+            </select>
 
-            </div>
+        </div>
 
-        </section>
+        <div class="search-input">
 
-    </main>
+            <i class="fa-solid fa-layer-group"></i>
+
+            <select id="categoryFilter">
+
+                <option value="">All Categories</option>
+
+                <option>IT</option>
+
+                <option>Restaurant</option>
+
+                <option>Marketing</option>
+
+                <option>Finance</option>
+
+            </select>
+
+        </div>
+
+        <button id="searchBtn">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            Search
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+        DASHBOARD STATS
+========================= -->
+
+<section class="cards">
+
+    <div class="card">
+
+        <i class="fa-solid fa-briefcase"></i>
+
+        <h3>Jobs Available</h3>
+
+        <h2 id="jobCount">1,248</h2>
+
+    </div>
+
+    <div class="card">
+
+        <i class="fa-solid fa-building"></i>
+
+        <h3>Companies</h3>
+
+        <h2 id="companyCount">186</h2>
+
+    </div>
+
+    <div class="card">
+
+        <i class="fa-solid fa-users"></i>
+
+        <h3>Candidates</h3>
+
+        <h2 id="candidateCount">8,420</h2>
+
+    </div>
+
+    <div class="card">
+
+        <i class="fa-solid fa-file-circle-check"></i>
+
+        <h3>Applications</h3>
+
+        <h2 id="applicationCount">325</h2>
+
+    </div>
+
+</section>
+<!-- =========================
+        FEATURED JOBS
+========================= -->
+
+<section class="featured-jobs">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>🔥 Featured Jobs</h2>
+
+            <p>Recommended jobs based on your skills</p>
+
+        </div>
+
+        <a href="jobs.html" class="view-all-btn">
+
+            View All
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </div>
+
+    <div id="jobsContainer" class="job-grid">
+
+        <!-- Jobs will be loaded from dashboard.js -->
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+        QUICK ACTIONS
+========================= -->
+
+<section class="quick-actions">
+
+    <div class="action-card">
+
+        <i class="fa-solid fa-user-pen"></i>
+
+        <h3>Complete Profile</h3>
+
+        <p>Increase your chances of getting hired.</p>
+
+        <button>Update Profile</button>
+
+    </div>
+
+    <div class="action-card">
+
+        <i class="fa-solid fa-file-arrow-up"></i>
+
+        <h3>Upload Resume</h3>
+
+        <p>Employers can discover you faster.</p>
+
+        <button>Upload Resume</button>
+
+    </div>
+
+    <div class="action-card">
+
+        <i class="fa-solid fa-bookmark"></i>
+
+        <h3>Saved Jobs</h3>
+
+        <p>Continue applying to saved opportunities.</p>
+
+        <button>View Saved</button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+        POPULAR SKILLS
+========================= -->
+
+<section class="skills-section">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>🔥 Trending Skills</h2>
+
+            <p>Most demanded skills by employers</p>
+
+        </div>
+
+    </div>
+
+    <div class="skills">
+
+        <span>HTML</span>
+
+        <span>CSS</span>
+
+        <span>JavaScript</span>
+
+        <span>React</span>
+
+        <span>Node.js</span>
+
+        <span>Python</span>
+
+        <span>Flutter</span>
+
+        <span>UI / UX</span>
+
+        <span>Digital Marketing</span>
+
+        <span>Graphic Design</span>
+
+        <span>Accounting</span>
+
+        <span>Customer Service</span>
+
+    </div>
+
+</section>
+<!-- =========================
+        FEATURED COMPANIES
+========================= -->
+
+<section class="companies">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>🏢 Featured Companies</h2>
+
+            <p>Companies hiring actively this week</p>
+
+        </div>
+
+    </div>
+
+    <div class="company-grid">
+
+        <div class="company-card">
+
+            <i class="fa-solid fa-laptop-code"></i>
+
+            <h3>Leading Edge Software</h3>
+
+            <p>Birtamode, Jhapa</p>
+
+            <button>View Jobs</button>
+
+        </div>
+
+        <div class="company-card">
+
+            <i class="fa-solid fa-mug-hot"></i>
+
+            <h3>Himalayan Cafe</h3>
+
+            <p>Birtamode</p>
+
+            <button>View Jobs</button>
+
+        </div>
+
+        <div class="company-card">
+
+            <i class="fa-solid fa-palette"></i>
+
+            <h3>Pixel Studio</h3>
+
+            <p>Damak</p>
+
+            <button>View Jobs</button>
+
+        </div>
+
+        <div class="company-card">
+
+            <i class="fa-solid fa-hospital"></i>
+
+            <h3>B&C Hospital</h3>
+
+            <p>Birtamode</p>
+
+            <button>View Jobs</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+        CAREER TIPS
+========================= -->
+
+<section class="career-tips">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>💡 Career Tips</h2>
+
+            <p>Improve your chances of getting hired</p>
+
+        </div>
+
+    </div>
+
+    <div class="tips-grid">
+
+        <div class="tip-card">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+            <h3>Build a Strong Resume</h3>
+
+            <p>
+                Keep your resume updated with your latest
+                experience and skills.
+            </p>
+
+        </div>
+
+        <div class="tip-card">
+
+            <i class="fa-solid fa-user-tie"></i>
+
+            <h3>Complete Your Profile</h3>
+
+            <p>
+                Profiles with complete information receive
+                more interview invitations.
+            </p>
+
+        </div>
+
+        <div class="tip-card">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            <h3>Learn New Skills</h3>
+
+            <p>
+                Stay competitive by learning in-demand
+                technologies and soft skills.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+        FOOTER
+========================= -->
+
+<!-- =========================
+        FOOTER
+========================= -->
+
+<footer class="dashboard-footer">
+
+    <div class="footer-left">
+
+        <h3>SkillLink Nepal</h3>
+
+        <p>Connecting talent with opportunities across Nepal.</p>
+
+    </div>
+
+    <div class="footer-right">
+
+        <a href="#">About</a>
+
+        <a href="#">Privacy</a>
+
+        <a href="#">Contact</a>
+
+        <a href="#">Help</a>
+
+    </div>
+
+</footer>
+
+<div class="copyright">
+
+    © 2026 All Rights Reserved | Developed by <strong>Sushil Khanal</strong>
 
 </div>
 
-<!-- ===================================
-        CHART.JS
-=================================== -->
+</main>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<!-- ===================================
-        DASHBOARD JAVASCRIPT
-=================================== -->
+</div>
 
 <script src="dashboard.js"></script>
 
