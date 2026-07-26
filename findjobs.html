@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Jobs | SkillLink Nepal</title>
+
+    <link rel="stylesheet" href="findjobs.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- ==========================
+        SIDEBAR
+========================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-briefcase"></i>
+
+        <span>SkillLink</span>
+
+    </div>
+
+    <nav>
+
+        <ul class="menu">
+
+            <li class="menu-item">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Dashboard</span>
+
+            </li>
+
+            <li class="menu-item">
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>My Profile</span>
+
+            </li>
+
+            <li class="menu-item active">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <span>Find Jobs</span>
+
+            </li>
+
+            <li class="menu-item">
+
+                <i class="fa-solid fa-file-circle-check"></i>
+
+                <span>Applications</span>
+
+            </li>
+
+            <li class="menu-item">
+
+                <i class="fa-solid fa-heart"></i>
+
+                <span>Saved Jobs</span>
+
+            </li>
+
+            <li class="menu-item">
+
+                <i class="fa-solid fa-building"></i>
+
+                <span>Companies</span>
+
+            </li>
+
+            <li class="menu-item">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <span>Messages</span>
+
+            </li>
+
+            <li class="menu-item">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <span>Notifications</span>
+
+            </li>
+
+            <li class="menu-item">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+</aside>
+
+<!-- ==========================
+        MAIN CONTENT
+========================== -->
+
+<main class="main-content">
+
+<header class="page-header">
+
+    <button class="menu-toggle">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+    <div>
+
+        <h1>Find Your Dream Job</h1>
+
+        <p>Search thousands of verified jobs across Nepal.</p>
+
+    </div>
+
+</header>
+<!-- =====================================
+        SEARCH SECTION
+====================================== -->
+
+<section class="search-section">
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search jobs, companies or skills...">
+
+        <button id="searchBtn">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            Search
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+        FILTERS
+====================================== -->
+
+<section class="filters">
+
+    <select id="locationFilter">
+
+        <option value="">📍 All Locations</option>
+
+        <option>Birtamode</option>
+
+        <option>Damak</option>
+
+        <option>Jhapa</option>
+
+        <option>Kathmandu</option>
+
+        <option>Pokhara</option>
+
+    </select>
+
+    <select id="categoryFilter">
+
+        <option value="">💼 All Categories</option>
+
+        <option>IT</option>
+
+        <option>Restaurant</option>
+
+        <option>Marketing</option>
+
+        <option>Finance</option>
+
+        <option>Design</option>
+
+    </select>
+
+    <select id="typeFilter">
+
+        <option value="">👜 Job Type</option>
+
+        <option>Full Time</option>
+
+        <option>Part Time</option>
+
+        <option>Internship</option>
+
+        <option>Remote</option>
+
+    </select>
+
+</section>
+
+<!-- =====================================
+        JOB LIST
+====================================== -->
+
+<section class="jobs-section">
+
+    <div class="section-title">
+
+        <h2>Available Jobs</h2>
+
+        <span id="jobCount">0 Jobs Found</span>
+
+    </div>
+
+    <div id="jobsContainer" class="job-grid">
+
+        <!-- JavaScript will generate jobs here -->
+
+    </div>
+
+</section>
+<!-- =====================================
+        JOB DETAILS MODAL
+===================================== -->
+
+<div id="jobModal" class="job-modal">
+
+    <div class="job-modal-content">
+
+        <span id="closeModal" class="close-modal">
+
+            &times;
+
+        </span>
+
+        <div id="modalContent">
+
+            <!-- Job details will appear here -->
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+        FOOTER
+===================================== -->
+
+<footer class="page-footer">
+
+    <h3>SkillLink Nepal</h3>
+
+    <p>
+
+        Helping talented people connect with trusted employers across Nepal.
+
+    </p>
+
+</footer>
+
+<!-- =====================================
+        COPYRIGHT
+===================================== -->
+
+<div class="copyright">
+
+    © 2026 All Rights Reserved | Developed by <strong>Sushil Khanal</strong>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="findjobs.js"></script>
+<!-- =====================================
+        JOB DETAILS MODAL
+===================================== -->
+
+<div id="jobModal" class="job-modal">
+
+    <div class="job-modal-content">
+
+        <span id="closeModal" class="close-modal">
+
+            &times;
+
+        </span>
+
+        <div id="modalContent">
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
