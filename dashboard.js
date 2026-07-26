@@ -1,6 +1,6 @@
-// ===================================
-// SIDEBAR TOGGLE
-// ===================================
+// ======================================
+// SIDEBAR
+// ======================================
 
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
@@ -8,6 +8,7 @@ const overlay = document.getElementById("overlay");
 const mainContent = document.getElementById("mainContent");
 
 // Toggle Sidebar
+
 if (menuToggle) {
 
     menuToggle.addEventListener("click", () => {
@@ -17,16 +18,16 @@ if (menuToggle) {
             sidebar.classList.toggle("show");
 
             if (overlay) {
+
                 overlay.classList.toggle("show");
+
             }
 
         } else {
 
             sidebar.classList.toggle("collapsed");
 
-            if (mainContent) {
-                mainContent.classList.toggle("expanded");
-            }
+            mainContent.classList.toggle("expanded");
 
         }
 
@@ -34,56 +35,40 @@ if (menuToggle) {
 
 }
 
-// Close sidebar when clicking overlay
+// Overlay Close
+
 if (overlay) {
 
     overlay.addEventListener("click", () => {
 
         sidebar.classList.remove("show");
+
         overlay.classList.remove("show");
 
     });
 
 }
 
+// Close sidebar after resize
 
-// ===================================
-// ACTIVE SIDEBAR MENU
-// ===================================
+window.addEventListener("resize", () => {
 
-const menuItems = document.querySelectorAll(".menu-item");
+    if (window.innerWidth > 992) {
 
-menuItems.forEach(item => {
+        sidebar.classList.remove("show");
 
-    item.addEventListener("click", () => {
+        if (overlay) {
 
-        menuItems.forEach(menu => {
-
-            menu.classList.remove("active");
-
-        });
-
-        item.classList.add("active");
-
-        // Close sidebar automatically on mobile
-        if (window.innerWidth <= 992) {
-
-            sidebar.classList.remove("show");
-
-            if (overlay) {
-                overlay.classList.remove("show");
-            }
+            overlay.classList.remove("show");
 
         }
 
-    });
+    }
 
 });
-
-
-// ===================================
+// ======================================
 // JOB DATABASE
-// ===================================
+// ======================================
 
 const jobs = [
 
@@ -134,26 +119,26 @@ const jobs = [
 
 ];
 
-
-// ===================================
+// ======================================
 // DISPLAY JOBS
-// ===================================
+// ======================================
 
 const jobsContainer = document.getElementById("jobsContainer");
 
-function displayJobs(jobArray) {
+function displayJobs(jobArray){
 
-    if (!jobsContainer) return;
+    if(!jobsContainer) return;
 
     jobsContainer.innerHTML = "";
 
-    jobArray.forEach(job => {
+    jobArray.forEach(job=>{
 
         const card = document.createElement("div");
 
         card.className = "job-card";
 
         card.innerHTML = `
+
             <h3>${job.title}</h3>
 
             <p>
@@ -179,6 +164,7 @@ function displayJobs(jobArray) {
             <button class="apply-btn">
                 Apply Now
             </button>
+
         `;
 
         jobsContainer.appendChild(card);
@@ -188,3 +174,160 @@ function displayJobs(jobArray) {
 }
 
 displayJobs(jobs);
+// ======================================
+// SEARCH & FILTERS
+// ======================================
+
+const searchInput = document.getElementById("searchInput");
+const locationFilter = document.getElementById("locationFilter");
+const categoryFilter = document.getElementById("categoryFilter");
+const searchBtn = document.getElementById("searchBtn");
+
+// Filter Jobs
+
+function filterJobs(){
+
+    const keyword = searchInput.value.toLowerCase();
+
+    const location = locationFilter.value;
+
+    const category = categoryFilter.value;
+
+    const filteredJobs = jobs.filter(job=>{
+
+        const matchKeyword =
+
+            job.title.toLowerCase().includes(keyword) ||
+
+            job.company.toLowerCase().includes(keyword);
+
+        const matchLocation =
+
+            location === "" ||
+
+            job.location === location;
+
+        const matchCategory =
+
+            category === "" ||
+
+            job.category === category;
+
+        return (
+
+            matchKeyword &&
+
+            matchLocation &&
+
+            matchCategory
+
+        );
+
+    });
+
+    displayJobs(filteredJobs);
+
+}
+
+// ======================================
+// EVENTS
+// ======================================
+
+if(searchInput){
+
+    searchInput.addEventListener("keyup",filterJobs);
+
+}
+
+if(locationFilter){
+
+    locationFilter.addEventListener("change",filterJobs);
+
+}
+
+if(categoryFilter){
+
+    categoryFilter.addEventListener("change",filterJobs);
+
+}
+
+if(searchBtn){
+
+    searchBtn.addEventListener("click",filterJobs);
+
+}
+
+// ======================================
+// DASHBOARD COUNTERS
+// ======================================
+
+const jobCount = document.getElementById("jobCount");
+const companyCount = document.getElementById("companyCount");
+const candidateCount = document.getElementById("candidateCount");
+const applicationCount = document.getElementById("applicationCount");
+
+if(jobCount){
+
+    jobCount.textContent = jobs.length;
+
+}
+
+if(companyCount){
+
+    companyCount.textContent = "186";
+
+}
+
+if(candidateCount){
+
+    candidateCount.textContent = "8420";
+
+}
+
+if(applicationCount){
+
+    applicationCount.textContent = "325";
+
+}
+
+// ======================================
+// PAGE LOADED
+// ======================================
+
+console.log("✅ Dashboard Loaded Successfully");
+// ======================================
+// NOTIFICATION PANEL
+// ======================================
+
+const notificationBtn = document.getElementById("notificationBtn");
+const notificationPanel = document.getElementById("notificationPanel");
+
+if(notificationBtn){
+
+    notificationBtn.addEventListener("click",(e)=>{
+
+        e.stopPropagation();
+
+        notificationPanel.classList.toggle("show");
+
+    });
+
+}
+
+// Close when clicking anywhere else
+
+document.addEventListener("click",(e)=>{
+
+    if(
+
+        notificationPanel &&
+        !notificationPanel.contains(e.target) &&
+        !notificationBtn.contains(e.target)
+
+    ){
+
+        notificationPanel.classList.remove("show");
+
+    }
+
+});

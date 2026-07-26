@@ -385,13 +385,48 @@ function showJob(index){
 // APPLY BUTTON
 // ======================================
 
-function applyJob(event,jobTitle){
+function applyJob(event, jobTitle){
 
     event.stopPropagation();
 
-    alert("🎉 You have successfully applied for " + jobTitle + "!");
+    const job = jobs.find(j => j.title === jobTitle);
+
+    let applications = JSON.parse(localStorage.getItem("applications")) || [];
+
+    // Check if already applied
+    const alreadyApplied = applications.some(app => app.id === job.id);
+
+    if(alreadyApplied){
+
+        alert("⚠️ You have already applied for this job.");
+
+        return;
+
+    }
+
+    applications.push({
+
+        ...job,
+
+        date: new Date().toLocaleDateString()
+
+    });
+
+    localStorage.setItem(
+
+        "applications",
+
+        JSON.stringify(applications)
+
+    );
+
+    alert("🎉 Application Submitted Successfully!");
 
     jobModal.classList.remove("show");
+
+    window.location.href = "applications.html";
+
+}odal.classList.remove("show");
 
 }
 
@@ -416,5 +451,20 @@ window.addEventListener("click",(e)=>{
         jobModal.classList.remove("show");
 
     }
+
+});
+// ======================================
+// DESKTOP SIDEBAR TOGGLE
+// ======================================
+
+const menuToggle = document.querySelector(".menu-toggle");
+const sidebar = document.querySelector(".sidebar");
+const mainContent = document.querySelector(".main-content");
+
+menuToggle.addEventListener("click", () => {
+
+    sidebar.classList.toggle("collapsed");
+
+    mainContent.classList.toggle("expanded");
 
 });
