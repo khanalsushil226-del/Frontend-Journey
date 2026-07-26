@@ -1,223 +1,228 @@
 // ======================================
-// JOB DATABASE
+// LOAD SAVED JOBS
+// ======================================
+
+const savedJobsContainer = document.getElementById("savedJobsContainer");
+
+const savedJobCount = document.getElementById("savedJobCount");
+
+const savedJobs = JSON.parse(localStorage.getItem("savedJobs")) || [];
+
+
+// ======================================
+// SAME JOB DATABASE
 // ======================================
 
 const jobs = [
 
 {
-    id:1,
-    title:"Frontend Developer",
-    company:"Leading Edge Software",
-    location:"Birtamode",
-    salary:"NPR 35,000",
-    type:"Full Time",
-    category:"IT",
-    icon:"fa-laptop-code"
+id:1,
+title:"Frontend Developer",
+company:"Leading Edge Software",
+location:"Birtamode",
+salary:"NPR 35,000",
+type:"Full Time",
+category:"IT",
+icon:"fa-laptop-code"
 },
 
 {
-    id:2,
-    title:"Graphic Designer",
-    company:"Pixel Studio",
-    location:"Damak",
-    salary:"NPR 30,000",
-    type:"Full Time",
-    category:"Design",
-    icon:"fa-palette"
+id:2,
+title:"Graphic Designer",
+company:"Pixel Studio",
+location:"Damak",
+salary:"NPR 30,000",
+type:"Full Time",
+category:"Design",
+icon:"fa-palette"
 },
 
 {
-    id:3,
-    title:"Restaurant Manager",
-    company:"Himalayan Cafe",
-    location:"Birtamode",
-    salary:"NPR 40,000",
-    type:"Full Time",
-    category:"Restaurant",
-    icon:"fa-mug-hot"
+id:3,
+title:"Restaurant Manager",
+company:"Himalayan Cafe",
+location:"Birtamode",
+salary:"NPR 40,000",
+type:"Full Time",
+category:"Restaurant",
+icon:"fa-mug-hot"
 },
 
 {
-    id:4,
-    title:"Marketing Officer",
-    company:"ABC Digital",
-    location:"Jhapa",
-    salary:"NPR 28,000",
-    type:"Part Time",
-    category:"Marketing",
-    icon:"fa-bullhorn"
+id:4,
+title:"Marketing Officer",
+company:"ABC Digital",
+location:"Jhapa",
+salary:"NPR 28,000",
+type:"Part Time",
+category:"Marketing",
+icon:"fa-bullhorn"
 },
 
 {
-    id:5,
-    title:"Accountant",
-    company:"Global Finance",
-    location:"Kathmandu",
-    salary:"NPR 45,000",
-    type:"Full Time",
-    category:"Finance",
-    icon:"fa-calculator"
+id:5,
+title:"Accountant",
+company:"Global Finance",
+location:"Kathmandu",
+salary:"NPR 45,000",
+type:"Full Time",
+category:"Finance",
+icon:"fa-calculator"
 },
 
 {
-    id:6,
-    title:"UI/UX Designer",
-    company:"Creative Studio",
-    location:"Pokhara",
-    salary:"NPR 38,000",
-    type:"Remote",
-    category:"Design",
-    icon:"fa-pen-ruler"
+id:6,
+title:"UI/UX Designer",
+company:"Creative Studio",
+location:"Pokhara",
+salary:"NPR 38,000",
+type:"Remote",
+category:"Design",
+icon:"fa-pen-ruler"
 }
 
 ];
 
-// ======================================
-// GET SAVED JOBS
-// ======================================
 
-let savedJobs = JSON.parse(localStorage.getItem("savedJobs")) || [];
-
-const savedJobsContainer = document.getElementById("savedJobsContainer");
-
-const savedCount = document.getElementById("savedCount");
-
-const emptyState = document.getElementById("emptyState");
 // ======================================
 // DISPLAY SAVED JOBS
 // ======================================
 
 function displaySavedJobs(){
 
-    savedJobsContainer.innerHTML = "";
+    if(!savedJobsContainer) return;
 
-    const savedJobList = jobs.filter(job =>
-        savedJobs.includes(job.id)
-    );
+    savedJobsContainer.innerHTML="";
 
-    savedCount.innerHTML = `${savedJobList.length} Jobs Saved`;
+    const saved = jobs.filter(job=>savedJobs.includes(job.id));
 
-    if(savedJobList.length === 0){
+    if(savedJobCount){
 
-        emptyState.style.display = "block";
+        savedJobCount.innerHTML=`${saved.length} Saved Jobs`;
 
-        savedJobsContainer.style.display = "none";
+    }
+
+    if(saved.length===0){
+
+        savedJobsContainer.innerHTML=`
+
+        <div class="empty-state">
+
+            <i class="fa-regular fa-heart"></i>
+
+            <h2>No Saved Jobs</h2>
+
+            <p>You haven't saved any jobs yet.</p>
+
+            <a href="findjobs.html" class="browse-btn">
+
+                Browse Jobs
+
+            </a>
+
+        </div>
+
+        `;
 
         return;
 
     }
 
-    emptyState.style.display = "none";
+    saved.forEach(job=>{
 
-    savedJobsContainer.style.display = "grid";
+        savedJobsContainer.innerHTML+=`
 
-    savedJobList.forEach(job=>{
+<div class="job-card">
 
-        savedJobsContainer.innerHTML += `
+<div class="company-logo">
 
-        <div class="job-card">
+<i class="fa-solid ${job.icon}"></i>
 
-            <div class="company-logo">
+</div>
 
-                <i class="fa-solid ${job.icon}"></i>
+<h3>${job.title}</h3>
 
-            </div>
+<p>
 
-            <h3>${job.title}</h3>
+<i class="fa-solid fa-building"></i>
 
-            <p>
+${job.company}
 
-                <i class="fa-solid fa-building"></i>
+</p>
 
-                ${job.company}
+<p>
 
-            </p>
+<i class="fa-solid fa-location-dot"></i>
 
-            <p>
+${job.location}
 
-                <i class="fa-solid fa-location-dot"></i>
+</p>
 
-                ${job.location}
+<p>
 
-            </p>
+<i class="fa-solid fa-money-bill"></i>
 
-            <p>
+${job.salary}
 
-                <i class="fa-solid fa-money-bill"></i>
+</p>
 
-                ${job.salary}
+<div class="job-tags">
 
-            </p>
+<span>${job.type}</span>
 
-            <div class="job-tags">
+<span>${job.category}</span>
 
-                <span>${job.type}</span>
+</div>
 
-                <span>${job.category}</span>
+<div class="job-buttons">
 
-            </div>
+<button class="apply-btn">
 
-            <div class="job-buttons">
+Apply Now
 
-                <button class="apply-btn">
+</button>
 
-                    Apply Now
+<button
 
-                </button>
+class="remove-btn"
 
-                <button
-                    class="remove-btn"
-                    onclick="removeSavedJob(${job.id})"
-                >
+onclick="removeSavedJob(${job.id})"
 
-                    <i class="fa-solid fa-trash"></i>
+>
 
-                </button>
+Remove
 
-            </div>
+</button>
 
-        </div>
+</div>
 
-        `;
+</div>
+
+`;
 
     });
 
 }
 
 displaySavedJobs();
+
+
 // ======================================
 // REMOVE SAVED JOB
 // ======================================
 
-function removeSavedJob(jobId){
+function removeSavedJob(id){
 
-    // Remove the job from the savedJobs array
-    savedJobs = savedJobs.filter(id => id !== jobId);
+    let updatedSavedJobs = savedJobs.filter(jobId=>jobId!==id);
 
-    // Update Local Storage
     localStorage.setItem(
 
         "savedJobs",
 
-        JSON.stringify(savedJobs)
+        JSON.stringify(updatedSavedJobs)
 
     );
 
-    // Refresh the page
-    displaySavedJobs();
+    location.reload();
 
 }
-
-// ======================================
-// APPLY BUTTON
-// ======================================
-
-document.addEventListener("click",function(e){
-
-    if(e.target.classList.contains("apply-btn")){
-
-        alert("🎉 Application Submitted Successfully!");
-
-    }
-
-});

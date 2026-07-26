@@ -4,135 +4,37 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
+/* ==========================================
+   RESET
+========================================== */
+
 *{
-
     margin:0;
-
     padding:0;
-
     box-sizing:border-box;
-
-    font-family:"Poppins",sans-serif;
-
 }
 
 body{
 
+    font-family:'Poppins',sans-serif;
+
     background:#f5f7fb;
 
-}
-
-.dashboard{
-
-    display:flex;
+    color:#1f2937;
 
 }
 
 /* ==========================================
-   SIDEBAR
+   CONTAINER
 ========================================== */
 
-.sidebar{
+.container{
 
-    width:270px;
+    width:min(1300px,92%);
 
-    height:100vh;
+    margin:auto;
 
-    background:#1e293b;
-
-    color:white;
-
-    position:fixed;
-
-    left:0;
-
-    top:0;
-
-    padding:30px 20px;
-
-}
-
-.logo{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    font-size:24px;
-
-    font-weight:700;
-
-    margin-bottom:40px;
-
-}
-
-.logo i{
-
-    color:#3b82f6;
-
-}
-
-.menu{
-
-    list-style:none;
-
-}
-
-.menu li{
-
-    margin-bottom:12px;
-
-}
-
-.menu a,
-
-.menu-item{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    color:white;
-
-    text-decoration:none;
-
-    padding:14px 18px;
-
-    border-radius:12px;
-
-    transition:.3s;
-
-    cursor:pointer;
-
-}
-
-.menu-item:hover{
-
-    background:#3b82f6;
-
-}
-
-.menu-item.active{
-
-    background:#3b82f6;
-
-}
-
-/* ==========================================
-   MAIN CONTENT
-========================================== */
-
-.main-content{
-
-    margin-left:270px;
-
-    width:calc(100% - 270px);
-
-    padding:40px;
+    padding:50px 0;
 
 }
 
@@ -140,619 +42,78 @@ body{
    HEADER
 ========================================== */
 
-.page-header{
+header{
+
+    background:#ffffff;
+
+    padding:35px;
+
+    border-radius:22px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
 
     margin-bottom:40px;
 
 }
 
-.page-header h1{
+header h1{
 
-    font-size:36px;
+    font-size:42px;
 
-    color:#1f2937;
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    color:#2563eb;
 
 }
 
-.page-header p{
+header p{
+
+    margin-top:12px;
 
     color:#6b7280;
 
-    margin-top:10px;
-
-}
-/* ==========================================
-   SAVED JOBS SECTION
-========================================== */
-
-.saved-jobs-section{
-
-    margin-top:20px;
-
-}
-
-.section-title{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:30px;
-
-}
-
-.section-title h2{
-
-    font-size:28px;
-
-    color:#1f2937;
-
-}
-
-.section-title span{
-
-    background:#dbeafe;
-
-    color:#2563eb;
-
-    padding:10px 18px;
-
-    border-radius:30px;
-
-    font-weight:600;
-
-    font-size:15px;
+    font-size:18px;
 
 }
 
 /* ==========================================
-   JOB GRID
+   BACK BUTTON
 ========================================== */
 
-.job-grid{
+.back-btn{
 
-    display:grid;
-
-    grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
-
-    gap:28px;
-
-}
-
-/* ==========================================
-   JOB CARD
-========================================== */
-
-.job-card{
-
-    background:#ffffff;
-
-    border-radius:20px;
-
-    padding:25px;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-
-    transition:.35s;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-.job-card:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:0 18px 45px rgba(0,0,0,.15);
-
-}
-
-.job-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    top:0;
-
-    width:100%;
-
-    height:5px;
-
-    background:#3b82f6;
-
-}
-
-/* ==========================================
-   COMPANY LOGO
-========================================== */
-
-.company-logo{
-
-    width:65px;
-
-    height:65px;
-
-    border-radius:18px;
-
-    background:#dbeafe;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:28px;
-
-    color:#2563eb;
-
-    margin-bottom:18px;
-
-}
-
-/* ==========================================
-   JOB INFO
-========================================== */
-
-.job-card h3{
-
-    font-size:22px;
-
-    color:#1f2937;
-
-    margin-bottom:12px;
-
-}
-
-.job-card p{
-
-    display:flex;
+    display:inline-flex;
 
     align-items:center;
 
     gap:10px;
 
-    color:#6b7280;
-
-    margin-bottom:10px;
-
-    font-size:15px;
-
-}
-
-.job-card p i{
-
-    color:#3b82f6;
-
-    width:18px;
-
-}
-/* ==========================================
-   JOB TAGS
-========================================== */
-
-.job-tags{
-
-    display:flex;
-
-    gap:12px;
-
-    flex-wrap:wrap;
-
-    margin:20px 0;
-
-}
-
-.job-tags span{
-
-    background:#eff6ff;
-
-    color:#2563eb;
-
-    padding:8px 16px;
-
-    border-radius:30px;
-
-    font-size:14px;
-
-    font-weight:600;
-
-}
-
-/* ==========================================
-   JOB BUTTONS
-========================================== */
-
-.job-buttons{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
     margin-top:25px;
 
-}
-
-.apply-btn{
-
-    flex:1;
-
-    padding:12px;
-
-    border:none;
-
-    border-radius:10px;
-
-    background:#2563eb;
-
-    color:#fff;
-
-    font-size:15px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-.apply-btn:hover{
-
-    background:#1d4ed8;
-
-}
-
-/* ==========================================
-   REMOVE BUTTON
-========================================== */
-
-.remove-btn{
-
-    width:50px;
-
-    height:50px;
-
-    margin-left:12px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#fee2e2;
-
-    color:#dc2626;
-
-    font-size:20px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-.remove-btn:hover{
-
-    background:#dc2626;
-
-    color:#fff;
-
-}
-
-/* ==========================================
-   EMPTY STATE
-========================================== */
-
-.empty-state{
-
-    display:none;
-
-    text-align:center;
-
-    padding:80px 20px;
-
-}
-
-.empty-state i{
-
-    font-size:80px;
-
-    color:#d1d5db;
-
-    margin-bottom:25px;
-
-}
-
-.empty-state h2{
-
-    font-size:32px;
-
-    color:#1f2937;
-
-    margin-bottom:15px;
-
-}
-
-.empty-state p{
-
-    color:#6b7280;
-
-    max-width:500px;
-
-    margin:0 auto 30px;
-
-    line-height:1.7;
-
-}
-
-.browse-btn{
-
-    padding:15px 35px;
-
-    border:none;
-
-    border-radius:10px;
+    text-decoration:none;
 
     background:#2563eb;
 
     color:white;
 
-    font-size:16px;
+    padding:14px 22px;
+
+    border-radius:12px;
 
     font-weight:600;
-
-    cursor:pointer;
 
     transition:.3s;
 
 }
 
-.browse-btn:hover{
+.back-btn:hover{
 
     background:#1d4ed8;
 
     transform:translateY(-3px);
-
-}
-/* ==========================================
-   FOOTER
-========================================== */
-
-.page-footer{
-
-    margin-top:80px;
-
-    background:#1e293b;
-
-    color:white;
-
-    padding:60px 20px;
-
-    text-align:center;
-
-}
-
-.footer-container{
-
-    max-width:1200px;
-
-    margin:auto;
-
-}
-
-.footer-logo{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:12px;
-
-    margin-bottom:20px;
-
-}
-
-.footer-logo i{
-
-    font-size:34px;
-
-    color:#3b82f6;
-
-}
-
-.footer-logo h2{
-
-    font-size:30px;
-
-}
-
-.page-footer p{
-
-    color:#cbd5e1;
-
-    margin-bottom:30px;
-
-    font-size:16px;
-
-}
-
-.footer-links{
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:25px;
-
-    margin-bottom:30px;
-
-}
-
-.footer-links a{
-
-    color:white;
-
-    text-decoration:none;
-
-    transition:.3s;
-
-}
-
-.footer-links a:hover{
-
-    color:#3b82f6;
-
-}
-
-.footer-social{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:20px;
-
-}
-
-.footer-social a{
-
-    width:50px;
-
-    height:50px;
-
-    border-radius:50%;
-
-    background:#334155;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    color:white;
-
-    text-decoration:none;
-
-    font-size:18px;
-
-    transition:.3s;
-
-}
-
-.footer-social a:hover{
-
-    background:#3b82f6;
-
-    transform:translateY(-5px);
-
-}
-
-.copyright{
-
-    background:#0f172a;
-
-    color:#cbd5e1;
-
-    text-align:center;
-
-    padding:20px;
-
-}
-
-.copyright strong{
-
-    color:#3b82f6;
-
-}
-
-/* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media(max-width:992px){
-
-    .sidebar{
-
-        width:90px;
-
-    }
-
-    .sidebar span{
-
-        display:none;
-
-    }
-
-    .main-content{
-
-        margin-left:90px;
-
-        width:calc(100% - 90px);
-
-    }
-
-}
-
-@media(max-width:768px){
-
-    .main-content{
-
-        margin-left:0;
-
-        width:100%;
-
-        padding:20px;
-
-    }
-
-    .sidebar{
-
-        display:none;
-
-    }
-
-    .page-header h1{
-
-        font-size:28px;
-
-    }
-
-    .job-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .section-title{
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-        gap:15px;
-
-    }
-
-    .footer-links{
-
-        flex-direction:column;
-
-        gap:15px;
-
-    }
 
 }
