@@ -5,114 +5,79 @@
 const jobs = [
 
 {
-
+    id:1,
     title:"Frontend Developer",
-
     company:"Leading Edge Software",
-
     location:"Birtamode",
-
     salary:"NPR 35,000",
-
     type:"Full Time",
-
     category:"IT",
-
     icon:"fa-laptop-code"
-
 },
 
 {
-
+    id:2,
     title:"Graphic Designer",
-
     company:"Pixel Studio",
-
     location:"Damak",
-
     salary:"NPR 30,000",
-
     type:"Full Time",
-
     category:"Design",
-
     icon:"fa-palette"
-
 },
 
 {
-
+    id:3,
     title:"Restaurant Manager",
-
     company:"Himalayan Cafe",
-
     location:"Birtamode",
-
     salary:"NPR 40,000",
-
     type:"Full Time",
-
     category:"Restaurant",
-
     icon:"fa-mug-hot"
-
 },
 
 {
-
+    id:4,
     title:"Marketing Officer",
-
     company:"ABC Digital",
-
     location:"Jhapa",
-
     salary:"NPR 28,000",
-
     type:"Part Time",
-
     category:"Marketing",
-
     icon:"fa-bullhorn"
-
 },
 
 {
-
+    id:5,
     title:"Accountant",
-
     company:"Global Finance",
-
     location:"Kathmandu",
-
     salary:"NPR 45,000",
-
     type:"Full Time",
-
     category:"Finance",
-
     icon:"fa-calculator"
-
 },
 
 {
-
+    id:6,
     title:"UI/UX Designer",
-
     company:"Creative Studio",
-
     location:"Pokhara",
-
     salary:"NPR 38,000",
-
     type:"Remote",
-
     category:"Design",
-
     icon:"fa-pen-ruler"
-
 }
 
 ];
+
+// ======================================
+// LOCAL STORAGE
+// ======================================
+
+let savedJobs = JSON.parse(localStorage.getItem("savedJobs")) || [];
+
 // ======================================
 // DISPLAY JOBS
 // ======================================
@@ -131,67 +96,68 @@ function displayJobs(jobArray){
 
         jobsContainer.innerHTML += `
 
-     <div class="job-card" onclick="showJob(${jobs.indexOf(job)})">
+<div class="job-card" onclick="showJob(${jobs.indexOf(job)})">
 
-            <div class="company-logo">
+<div class="company-logo">
 
-                <i class="fa-solid ${job.icon}"></i>
+<i class="fa-solid ${job.icon}"></i>
 
-            </div>
+</div>
 
-            <h3>${job.title}</h3>
+<h3>${job.title}</h3>
 
-            <p>
+<p>
+<i class="fa-solid fa-building"></i>
+${job.company}
+</p>
 
-                <i class="fa-solid fa-building"></i>
+<p>
+<i class="fa-solid fa-location-dot"></i>
+${job.location}
+</p>
 
-                ${job.company}
+<p>
+<i class="fa-solid fa-money-bill"></i>
+${job.salary}
+</p>
 
-            </p>
+<div class="job-tags">
 
-            <p>
+<span>${job.type}</span>
 
-                <i class="fa-solid fa-location-dot"></i>
+<span>${job.category}</span>
 
-                ${job.location}
+</div>
 
-            </p>
+<div class="job-buttons">
 
-            <p>
+<button class="apply-btn">
 
-                <i class="fa-solid fa-money-bill"></i>
+Apply Now
 
-                ${job.salary}
+</button>
 
-            </p>
+<button
 
-            <div class="job-tags">
+class="save-btn"
 
-                <span>${job.type}</span>
+onclick="toggleSave(${job.id},event)"
 
-                <span>${job.category}</span>
+>
 
-            </div>
+<i class="${
+savedJobs.includes(job.id)
+? "fa-solid"
+: "fa-regular"
+} fa-heart"></i>
 
-            <div class="job-buttons">
+</button>
 
-                <button class="apply-btn">
+</div>
 
-                    Apply Now
+</div>
 
-                </button>
-
-                <button class="save-btn">
-
-                    <i class="fa-regular fa-heart"></i>
-
-                </button>
-
-            </div>
-
-        </div>
-
-        `;
+`;
 
     });
 
@@ -199,7 +165,7 @@ function displayJobs(jobArray){
 
 displayJobs(jobs);
 // ======================================
-// SEARCH FUNCTION
+// SEARCH
 // ======================================
 
 const searchInput = document.getElementById("searchInput");
@@ -279,12 +245,45 @@ function filterJobs(){
     displayJobs(filtered);
 
 }
+
+// ======================================
+// SAVE JOB
+// ======================================
+
+function toggleSave(jobId,event){
+
+    // Prevent opening the modal when heart is clicked
+    event.stopPropagation();
+
+    if(savedJobs.includes(jobId)){
+
+        savedJobs = savedJobs.filter(id => id !== jobId);
+
+    }else{
+
+        savedJobs.push(jobId);
+
+    }
+
+    localStorage.setItem(
+
+        "savedJobs",
+
+        JSON.stringify(savedJobs)
+
+    );
+
+    filterJobs();
+
+}
 // ======================================
 // JOB DETAILS MODAL
 // ======================================
 
 const jobModal = document.getElementById("jobModal");
+
 const modalContent = document.getElementById("modalContent");
+
 const closeModal = document.getElementById("closeModal");
 
 function showJob(index){
@@ -305,13 +304,37 @@ function showJob(index){
 
         <br>
 
-        <p><i class="fa-solid fa-location-dot"></i> ${job.location}</p>
+        <p>
 
-        <p><i class="fa-solid fa-money-bill"></i> ${job.salary}</p>
+            <i class="fa-solid fa-location-dot"></i>
 
-        <p><i class="fa-solid fa-briefcase"></i> ${job.type}</p>
+            ${job.location}
 
-        <p><i class="fa-solid fa-layer-group"></i> ${job.category}</p>
+        </p>
+
+        <p>
+
+            <i class="fa-solid fa-money-bill"></i>
+
+            ${job.salary}
+
+        </p>
+
+        <p>
+
+            <i class="fa-solid fa-briefcase"></i>
+
+            ${job.type}
+
+        </p>
+
+        <p>
+
+            <i class="fa-solid fa-layer-group"></i>
+
+            ${job.category}
+
+        </p>
 
         <br>
 
@@ -319,10 +342,10 @@ function showJob(index){
 
         <p>
 
-            We are looking for a passionate ${job.title}
+            We are looking for a passionate <strong>${job.title}</strong>
             who is willing to grow with our company.
-            The ideal candidate should have good communication,
-            teamwork and problem-solving skills.
+            The ideal candidate should have excellent communication,
+            teamwork, problem-solving skills, and a strong willingness to learn.
 
         </p>
 
@@ -340,11 +363,13 @@ function showJob(index){
 
             <li>✔ Team player</li>
 
+            <li>✔ Willing to learn new technologies</li>
+
         </ul>
 
         <br>
 
-        <button class="apply-btn">
+        <button class="apply-btn" onclick="applyJob(event,'${job.title}')">
 
             Apply Now
 
@@ -356,22 +381,40 @@ function showJob(index){
 
 }
 
-// Close Button
+// ======================================
+// APPLY BUTTON
+// ======================================
 
-closeModal.onclick = () => {
+function applyJob(event,jobTitle){
+
+    event.stopPropagation();
+
+    alert("🎉 You have successfully applied for " + jobTitle + "!");
 
     jobModal.classList.remove("show");
 
 }
 
-// Close when clicking outside
+// ======================================
+// CLOSE MODAL
+// ======================================
 
-window.onclick = (e)=>{
+closeModal.addEventListener("click",()=>{
 
-    if(e.target==jobModal){
+    jobModal.classList.remove("show");
+
+});
+
+// ======================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ======================================
+
+window.addEventListener("click",(e)=>{
+
+    if(e.target===jobModal){
 
         jobModal.classList.remove("show");
 
     }
 
-}
+});
